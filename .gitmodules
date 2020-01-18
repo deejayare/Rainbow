@@ -1,0 +1,3 @@
+[submodule "Rainbow/vendor/spdlog"]
+	path = Rainbow/vendor/spdlog
+	url = https://github.com/gabime/spdlog
