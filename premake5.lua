@@ -10,6 +10,12 @@ workspace "Rainbow"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	-- Include directories relative to root folder (solution directory)
+	IncludeDir = {}
+	IncludeDir["GLFW"] = "Rainbow/vendor/GLFW/include"
+
+	include "Rainbow/vendor/GLFW"
+
 	project "Rainbow"
 		location "Rainbow"
 		kind "SharedLib"
@@ -18,6 +24,9 @@ workspace "Rainbow"
 		targetdir("bin/" .. outputdir .. "/%{prj.name}")
 		objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
+		pchheader "rbpch.h"
+		pchsource "Rainbow/src/rbpch.cpp"
+				
 		files
 		{
 			"%{prj.name}/src/**.h",
@@ -26,13 +35,22 @@ workspace "Rainbow"
 
 		includedirs
 		{
-			"%{prj.name}/vendor/spdlog/include"
+			"%{prj.name}/src",
+			"%{prj.name}/vendor/spdlog/include",
+			"%{IncludeDir.GLFW}"
 		}
+		
+		links 
+		{ 
+			"GLFW",
+			"opengl32.lib"
+		}
+	
 
 		filter "system:windows"
 			cppdialect "C++17"
 			staticruntime "On"
-			systemversion "10.0.18362.0"
+			systemversion "latest"
 			
 			defines
 			{
@@ -82,7 +100,7 @@ workspace "Rainbow"
 		filter "system:windows"
 			cppdialect "C++17"
 			staticruntime "On"
-			systemversion "10.0.18362.0"
+			systemversion "latest"
 			
 			defines
 			{

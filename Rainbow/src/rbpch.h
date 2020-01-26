@@ -12,7 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Rainbow/Log.h"
+
 #ifdef RAINBOW_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
-

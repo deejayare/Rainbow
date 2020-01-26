@@ -9,3 +9,14 @@
 #else
 	#error Rainbow only supports Windows!
 #endif //RB_PLATFORM_WINDOWS
+
+
+#ifdef RAINBOW_ENABLE_ASSERTS
+	#define RAINBOW_ASSERT(x, ...) { if(!(x)) { RAINBOW_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define RAINBOW_CORE_ASSERT(x, ...) { if(!(x)) { RAINBOW_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define RAINBOW_ASSERT(x, ...)
+	#define RAINBOW_CORE_ASSERT(x, ...)
+#endif
+
+#define BIT(x) (1 << x)
