@@ -49,7 +49,7 @@ workspace "Rainbow"
 
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			staticruntime "Off"
 			systemversion "latest"
 			
 			defines
@@ -99,7 +99,7 @@ workspace "Rainbow"
 
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			staticruntime "Off"
 			systemversion "latest"
 			
 			defines

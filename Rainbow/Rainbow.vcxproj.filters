@@ -40,6 +40,12 @@
     <ClInclude Include="src\Rainbow\Events\MouseEvent.h">
       <Filter>Rainbow\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rainbow\Layer.h">
+      <Filter>Rainbow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rainbow\LayerStack.h">
+      <Filter>Rainbow</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rainbow\Log.h">
       <Filter>Rainbow</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Rainbow\Application.cpp">
+      <Filter>Rainbow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rainbow\Layer.cpp">
+      <Filter>Rainbow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rainbow\LayerStack.cpp">
       <Filter>Rainbow</Filter>
     </ClCompile>
     <ClCompile Include="src\Rainbow\Log.cpp">
