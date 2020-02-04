@@ -13,8 +13,13 @@ workspace "Rainbow"
 	-- Include directories relative to root folder (solution directory)
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "Rainbow/vendor/GLFW/include"
+	IncludeDir["glad"] = "Rainbow/vendor/glad/include"
+	IncludeDir["ImGui"] = "Rainbow/vendor/imgui"
+	
 
 	include "Rainbow/vendor/GLFW"
+	include "Rainbow/vendor/glad"
+	include "Rainbow/vendor/imgui"
 
 	project "Rainbow"
 		location "Rainbow"
@@ -37,12 +42,16 @@ workspace "Rainbow"
 		{
 			"%{prj.name}/src",
 			"%{prj.name}/vendor/spdlog/include",
-			"%{IncludeDir.GLFW}"
+			"%{IncludeDir.GLFW}",
+			"%{IncludeDir.glad}",
+			"%{IncludeDir.ImGui}"
 		}
 		
 		links 
 		{ 
 			"GLFW",
+			"glad",
+			"ImGui",
 			"opengl32.lib"
 		}
 	
@@ -55,7 +64,8 @@ workspace "Rainbow"
 			defines
 			{
 				"RAINBOW_PLATFORM_WINDOWS",
-				"RAINBOW_BUILD_DLL"
+				"RAINBOW_BUILD_DLL",
+				"GLFW_INCLUDE_NONE"
 			}
 
 			postbuildcommands

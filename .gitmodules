@@ -4,3 +4,6 @@
 [submodule "Rainbow/vendor/GLFW"]
 	path = Rainbow/vendor/GLFW
 	url = https://github.com/thecherno/glfw
+[submodule "Rainbow/vendor/imgui"]
+	path = Rainbow/vendor/imgui
+	url = https://github.com/TheCherno/imgui
