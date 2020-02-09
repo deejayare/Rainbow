@@ -1,4 +1,5 @@
 workspace "Rainbow"
+	startproject "Sandbox"
 	architecture "x64"
 
 	configurations
@@ -20,6 +21,21 @@ workspace "Rainbow"
 	include "Rainbow/vendor/GLFW"
 	include "Rainbow/vendor/glad"
 	include "Rainbow/vendor/imgui"
+
+	
+
+
+
+	group "Dependencies"
+		include "Rainbow/vendor/GLFW"
+		include "Rainbow/vendor/glad"
+		include "Rainbow/vendor/imgui"
+	
+	group ""
+
+
+
+
 
 	project "Rainbow"
 		location "Rainbow"
@@ -70,7 +86,7 @@ workspace "Rainbow"
 
 			postbuildcommands
 			{
-				("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+				("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 
 			}
 
@@ -133,3 +149,4 @@ workspace "Rainbow"
 		filter "configurations:Dist"
 			defines "RAINBOW_DIST"
 			symbols "On"
+			optimize "On"
