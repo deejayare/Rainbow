@@ -65,6 +65,8 @@
       <Filter>Rainbow</Filter>
     </ClInclude>
     <ClInclude Include="src\rbpch.h" />
+    <ClInclude Include="src\Rainbow\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
@@ -89,5 +91,6 @@
       <Filter>Rainbow</Filter>
     </ClCompile>
     <ClCompile Include="src\rbpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

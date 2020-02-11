@@ -40,6 +40,8 @@ namespace Rainbow {
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
+		virtual void* GetNativeWindow() const = 0;
+
 		// Create should return a window based on which platform we're on (Windows/Linux/Mac)
 		static Window* Create(const WindowProps& props = WindowProps());
 	};

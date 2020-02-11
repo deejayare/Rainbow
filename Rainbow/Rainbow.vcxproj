@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Rainbow.h" />
     <ClInclude Include="src\Rainbow\Application.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\Rainbow\Events\KeyEvent.h" />
     <ClInclude Include="src\Rainbow\Events\MouseEvent.h" />
     <ClInclude Include="src\Rainbow\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Rainbow\Input.h" />
     <ClInclude Include="src\Rainbow\Layer.h" />
     <ClInclude Include="src\Rainbow\LayerStack.h" />
     <ClInclude Include="src\Rainbow\Log.h" />
@@ -160,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Rainbow\Application.cpp" />
     <ClCompile Include="src\Rainbow\ImGui\ImGuiLayer.cpp" />
