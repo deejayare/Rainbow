@@ -24,7 +24,7 @@ namespace Rainbow {
 	private:
 		std::vector<Layer*> m_Layers;
 		// We want layers in the first section of the stack, and overlays in the second section of the strack. LayerInsert is the dividing point.
-		std::vector<Layer*>::iterator m_LayerInsert;
+		unsigned int  m_LayerInsertIndex = 0;
 
 
 

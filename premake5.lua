@@ -125,6 +125,7 @@ workspace "Rainbow"
 		{
 			"Rainbow/vendor/spdlog/include",
 			"Rainbow/src",
+			"Rainbow/vendor",
 			"%{IncludeDir.glm}"
 		}
 

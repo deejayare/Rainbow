@@ -6,6 +6,8 @@
 #include "Rainbow/Events/ApplicationEvent.h"
 #include "Rainbow/LayerStack.h"
 
+#include "Rainbow/Imgui/ImGuiLayer.h"
+
 namespace Rainbow {
 
 	class RAINBOW_API Application
@@ -26,6 +28,7 @@ namespace Rainbow {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
