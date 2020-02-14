@@ -16,6 +16,7 @@ workspace "Rainbow"
 	IncludeDir["GLFW"] = "Rainbow/vendor/GLFW/include"
 	IncludeDir["glad"] = "Rainbow/vendor/glad/include"
 	IncludeDir["ImGui"] = "Rainbow/vendor/imgui"
+	IncludeDir["glm"] = "Rainbow/vendor/glm"
 	
 
 	include "Rainbow/vendor/GLFW"
@@ -51,7 +52,9 @@ workspace "Rainbow"
 		files
 		{
 			"%{prj.name}/src/**.h",
-			"%{prj.name}/src/**.cpp"
+			"%{prj.name}/src/**.cpp",
+			"%{prj.name}/vendor/glm/glm/**.hpp",
+			"%{prj.name}/vendor/glm/glm/**.inl"
 		}
 
 		includedirs
@@ -60,7 +63,8 @@ workspace "Rainbow"
 			"%{prj.name}/vendor/spdlog/include",
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.glad}",
-			"%{IncludeDir.ImGui}"
+			"%{IncludeDir.ImGui}",
+			"%{IncludeDir.glm}"
 		}
 		
 		links 
@@ -120,7 +124,8 @@ workspace "Rainbow"
 		includedirs
 		{
 			"Rainbow/vendor/spdlog/include",
-			"Rainbow/src"
+			"Rainbow/src",
+			"%{IncludeDir.glm}"
 		}
 
 		filter "system:windows"

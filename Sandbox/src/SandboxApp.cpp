@@ -1,10 +1,15 @@
 #include <Rainbow.h>
 
 
+
+
 class ExampleLayer : public Rainbow::Layer
 {
 public:
-	ExampleLayer() : Layer("Example") {}
+	ExampleLayer() : Layer("Example") 
+	{
+
+	}
 
 	void OnUpdate() override 
 	{
