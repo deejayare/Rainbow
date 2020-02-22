@@ -1,6 +1,6 @@
 #include <Rainbow.h>
 
-
+#include "imgui/imgui.h"
 
 
 class ExampleLayer : public Rainbow::Layer
@@ -17,6 +17,7 @@ public:
 		if (Rainbow::Input::IsKeyPressed(RAINBOW_KEY_TAB))
 			RAINBOW_TRACE("Tab key is pressed!");
 	}
+
 
 	void OnEvent(Rainbow::Event& event) override 
 	{

@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef RAINBOW_PLATFORM_WINDOWS
-	#ifdef RAINBOW_BUILD_DLL
-		#define RAINBOW_API __declspec(dllexport)
+	#if RAINBOW_DYNAMIC_LINK
+		#ifdef RAINBOW_BUILD_DLL
+			#define RAINBOW_API __declspec(dllexport)
+		#else
+			#define RAINBOW_API __declspec(dllimport)
+		#endif // RB_BUILD_DLL
 	#else
-		#define RAINBOW_API __declspec(dllimport)
-	#endif // RB_BUILD_DLL
+		#define RAINBOW_API //static linking - this prevents __declspec(dllimport). Ideally we probably want to just remove RAINBOW_API in from all of our classes if we want static linking.
+	#endif
 #else
 	#error Rainbow only supports Windows!
 #endif //RB_PLATFORM_WINDOWS

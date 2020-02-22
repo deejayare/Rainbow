@@ -40,8 +40,10 @@ workspace "Rainbow"
 
 	project "Rainbow"
 		location "Rainbow"
-		kind "SharedLib"
+		kind "StaticLib"
 		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
 		
 		targetdir("bin/" .. outputdir .. "/%{prj.name}")
 		objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,6 +57,11 @@ workspace "Rainbow"
 			"%{prj.name}/src/**.cpp",
 			"%{prj.name}/vendor/glm/glm/**.hpp",
 			"%{prj.name}/vendor/glm/glm/**.inl"
+		}
+
+		defines
+		{
+			"_CRT_SECURE_NO_WARNINGS"
 		}
 
 		includedirs
@@ -77,8 +84,6 @@ workspace "Rainbow"
 	
 
 		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "Off"
 			systemversion "latest"
 			
 			defines
@@ -88,29 +93,27 @@ workspace "Rainbow"
 				"GLFW_INCLUDE_NONE"
 			}
 
-			postbuildcommands
-			{
-				("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-
-			}
-
 		filter "configurations:Debug"
 			defines "RAINBOW_DEBUG"
-			symbols "On"
+			runtime "Debug"
+			symbols "on"
 		
 		filter "configurations:Release"
 			defines "RAINBOW_RELEASE"
-			symbols "On"
+			runtime "Release"
+			optimize "on"
 
 		filter "configurations:Dist"
 			defines "RAINBOW_DIST"
-			symbols "On"
+			runtime "Release"
+			optimize "on"
 
 	project "Sandbox"
 		location "Sandbox"
 		kind "ConsoleApp"
-
 		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
 		
 		targetdir("bin/" .. outputdir .. "/%{prj.name}")
 		objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -129,9 +132,12 @@ workspace "Rainbow"
 			"%{IncludeDir.glm}"
 		}
 
+		links
+		{
+			"Rainbow"
+		}
+
 		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "Off"
 			systemversion "latest"
 			
 			defines
@@ -139,20 +145,17 @@ workspace "Rainbow"
 				"RAINBOW_PLATFORM_WINDOWS",
 			}
 
-			links
-			{
-				"Rainbow"
-			}
-
 		filter "configurations:Debug"
 			defines "RAINBOW_DEBUG"
-			symbols "On"
+			symbols "on"
+			runtime "Debug"
 		
 		filter "configurations:Release"
 			defines "RAINBOW_RELEASE"
-			symbols "On"
+			runtime "Release"
+			optimize "on"
 
 		filter "configurations:Dist"
 			defines "RAINBOW_DIST"
-			symbols "On"
-			optimize "On"
+			runtime "Release"
+			optimize "on"

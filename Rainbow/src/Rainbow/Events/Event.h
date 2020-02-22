@@ -1,5 +1,6 @@
 #pragma once
-#include "rbpch.h""
+
+#include "rbpch.h"
 #include "Rainbow/Core.h"
 
 namespace Rainbow {
