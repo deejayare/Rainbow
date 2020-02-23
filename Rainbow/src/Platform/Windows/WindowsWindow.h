@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Rainbow/Window.h"
-
+#include "Rainbow/Renderer/GraphicsContext.h"
 #include <GLFW/glfw3.h>
 
 namespace Rainbow {
@@ -27,6 +27,7 @@ namespace Rainbow {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

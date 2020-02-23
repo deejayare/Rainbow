@@ -18,6 +18,12 @@ public:
 			RAINBOW_TRACE("Tab key is pressed!");
 	}
 
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}
 
 	void OnEvent(Rainbow::Event& event) override 
 	{

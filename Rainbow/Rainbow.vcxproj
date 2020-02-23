@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Rainbow.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="src\Rainbow\LayerStack.h" />
     <ClInclude Include="src\Rainbow\Log.h" />
     <ClInclude Include="src\Rainbow\MouseButtonCodes.h" />
+    <ClInclude Include="src\Rainbow\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Rainbow\Window.h" />
     <ClInclude Include="src\rbpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -541,6 +543,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Rainbow\Application.cpp" />
