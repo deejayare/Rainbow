@@ -18,15 +18,6 @@ workspace "Rainbow"
 	IncludeDir["ImGui"] = "Rainbow/vendor/imgui"
 	IncludeDir["glm"] = "Rainbow/vendor/glm"
 	
-
-	include "Rainbow/vendor/GLFW"
-	include "Rainbow/vendor/glad"
-	include "Rainbow/vendor/imgui"
-
-	
-
-
-
 	group "Dependencies"
 		include "Rainbow/vendor/GLFW"
 		include "Rainbow/vendor/glad"
