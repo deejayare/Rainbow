@@ -159,6 +159,7 @@
     <ClInclude Include="src\Rainbow\Log.h" />
     <ClInclude Include="src\Rainbow\MouseButtonCodes.h" />
     <ClInclude Include="src\Rainbow\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Rainbow\Renderer\Shader.h" />
     <ClInclude Include="src\Rainbow\Window.h" />
     <ClInclude Include="src\rbpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -552,6 +553,7 @@
     <ClCompile Include="src\Rainbow\Layer.cpp" />
     <ClCompile Include="src\Rainbow\LayerStack.cpp" />
     <ClCompile Include="src\Rainbow\Log.cpp" />
+    <ClCompile Include="src\Rainbow\Renderer\Shader.cpp" />
     <ClCompile Include="src\rbpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
