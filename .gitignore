@@ -6,4 +6,5 @@ bin-int/
 # Files
 *.user
 */*vcxproj*
+*/*/*vcxproj*
 Rainbow.sln
