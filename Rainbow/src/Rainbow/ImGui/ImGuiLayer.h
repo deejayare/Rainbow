@@ -12,7 +12,7 @@ namespace Rainbow {
 	{
 	public:
 		ImGuiLayer();
-		~ImGuiLayer();
+		~ImGuiLayer() = default;
 
 
 		virtual void OnDetach() override;

@@ -17,9 +17,6 @@ namespace Rainbow {
 	{
 	}
 
-	ImGuiLayer::~ImGuiLayer()
-	{
-	}
 
 	void ImGuiLayer::OnAttach()
 	{
