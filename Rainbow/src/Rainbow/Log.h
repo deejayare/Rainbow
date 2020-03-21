@@ -26,7 +26,7 @@ namespace Rainbow {
 #define RAINBOW_CORE_INFO(...)   ::Rainbow::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define RAINBOW_CORE_WARN(...)   ::Rainbow::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define RAINBOW_CORE_ERROR(...)  ::Rainbow::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define RAINBOW_CORE_FATAL(...)  ::Rainbow::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define RAINBOW_CORE_CRITICAL(...)  ::Rainbow::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 
 
@@ -35,5 +35,5 @@ namespace Rainbow {
 #define RAINBOW_INFO(...)   ::Rainbow::Log::GetClientLogger()->info(__VA_ARGS__)
 #define RAINBOW_WARN(...)   ::Rainbow::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define RAINBOW_ERROR(...)  ::Rainbow::Log::GetClientLogger()->error(__VA_ARGS__)
-#define RAINBOW_FATAL(...)  ::Rainbow::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define RAINBOW_CRITICAL(...)  ::Rainbow::Log::GetClientLogger()->critical(__VA_ARGS__)
 
