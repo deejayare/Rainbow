@@ -46,7 +46,7 @@ namespace Rainbow {
 		static Application* s_Instance;
 	};
 
-	//To be definedin CLIENT
+	//To be defined in CLIENT
 	Application* CreateApplication();
 
 
