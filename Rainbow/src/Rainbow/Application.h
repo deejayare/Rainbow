@@ -12,6 +12,7 @@
 #include "Rainbow/Renderer/Shader.h"
 #include "Rainbow/Renderer/Buffer.h"
 #include "Rainbow/Renderer/Vertexarray.h"
+#include "Rainbow/Renderer/OrthographicCamera.h"
 
 namespace Rainbow {
 
@@ -42,6 +43,9 @@ namespace Rainbow {
 
 		std::shared_ptr<Shader> m_GreenShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
+
 
 		static Application* s_Instance;
 	};
