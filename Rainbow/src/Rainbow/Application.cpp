@@ -5,6 +5,8 @@
 
 #include "Input.h"
 
+#include <glfw/glfw3.h>
+
 
 
 namespace Rainbow {
@@ -25,7 +27,7 @@ namespace Rainbow {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-	}
+	} 
 
 	
 
@@ -59,8 +61,12 @@ namespace Rainbow {
 	{
 		while (m_Running)
 		{
+			// TEMPORARY
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

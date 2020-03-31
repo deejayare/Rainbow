@@ -5,6 +5,7 @@
 #include "Events/Event.h"
 #include "Rainbow/Events/ApplicationEvent.h"
 #include "Rainbow/LayerStack.h"
+#include "Rainbow/Core/Timestep.h"
 
 #include "Rainbow/Imgui/ImGuiLayer.h"
 
@@ -37,6 +38,8 @@ namespace Rainbow {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		float m_LastFrameTime = 0.0f;
 
 
 		static Application* s_Instance;
