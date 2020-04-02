@@ -1,15 +1,17 @@
 #include <Rainbow.h>
+#include "Platform/OpenGL/OpenGLShader.h"
 
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 
 class ExampleLayer : public Rainbow::Layer
 {
 public:
 	ExampleLayer() 
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition({0.0f, 0.0f, 0.0f}), m_SquarePosition(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition({0.0f, 0.0f, 0.0f})
 	{
 		m_VertexArray.reset(Rainbow::VertexArray::Create());
 
@@ -100,9 +102,9 @@ public:
 
 		)";
 
-		m_Shader.reset(new Rainbow::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Rainbow::Shader::Create(vertexSrc, fragmentSrc));
 
-		std::string greenShaderVertexSrc = R"(
+		std::string flatColorShaderVertexSrc = R"(
 		#version 330 core
 	
 		layout(location = 0) in vec3 a_Position;
@@ -119,21 +121,24 @@ public:
 		}
 		)";
 
-		std::string greenShaderFragmentSrc = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 		#version 330 core
 	
 		layout(location = 0) out vec4 color;
 
 		in vec3 v_Position;
+
+		uniform vec3 u_Color;
+
 		void main()
 		{
-			color = vec4(0.2f, 0.8f, 0.1f, 1.0f);
+			color = vec4(u_Color, 1.0f);
 		}
 
 
 		)";
 
-		m_GreenShader.reset(new Rainbow::Shader(greenShaderVertexSrc, greenShaderFragmentSrc));
+		m_FlatColorShader.reset(Rainbow::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Rainbow::Timestep ts) override
@@ -168,30 +173,37 @@ public:
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+
+		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Rainbow::Renderer::Submit(m_GreenShader, m_SquareVA, transform);
+				Rainbow::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
 
 
-//		Rainbow::Renderer::Submit(m_Shader, m_VertexArray);
+		Rainbow::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Rainbow::Renderer::EndScene();
 	}
 
 	virtual void OnImGuiRender() override
 	{
+		ImGui::Begin("Settings");
 
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+
+		ImGui::End();
 	}
 
 	void OnEvent(Rainbow::Event& event) override 
 	{
-
 	}
 
 
@@ -200,7 +212,7 @@ private:
 	std::shared_ptr<Rainbow::Shader> m_Shader;
 	std::shared_ptr<Rainbow::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Rainbow::Shader> m_GreenShader;
+	std::shared_ptr<Rainbow::Shader> m_FlatColorShader;
 	std::shared_ptr<Rainbow::VertexArray> m_SquareVA;
 
 	Rainbow::OrthographicCamera m_Camera;
@@ -208,7 +220,7 @@ private:
 	float m_CameraMoveSpeed = 3.0f;
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 180.0f;
-
+	glm::vec3 m_SquareColor = { 0.2f, 0.3, 0.8f };
 
 };
 
