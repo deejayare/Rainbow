@@ -21,7 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.7f, 0.1f, 0.1f, 1.0f
 		};
 
-		std::shared_ptr<Rainbow::VertexBuffer> vertexBuffer;
+		Rainbow::Ref<Rainbow::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Rainbow::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Rainbow::BufferLayout layout = {
@@ -33,7 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Rainbow::IndexBuffer> indexBuffer;
+		Rainbow::Ref<Rainbow::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Rainbow::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -48,7 +48,7 @@ public:
 		-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Rainbow::VertexBuffer> squareVB;
+		Rainbow::Ref<Rainbow::VertexBuffer> squareVB;
 		squareVB.reset(Rainbow::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 
@@ -59,7 +59,7 @@ public:
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 
-		std::shared_ptr<Rainbow::IndexBuffer> squareIB;
+		Rainbow::Ref<Rainbow::IndexBuffer> squareIB;
 		squareIB.reset(Rainbow::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 
 		m_SquareVA->SetIndexBuffer(squareIB);
@@ -209,11 +209,11 @@ public:
 
 
 private:
-	std::shared_ptr<Rainbow::Shader> m_Shader;
-	std::shared_ptr<Rainbow::VertexArray> m_VertexArray;
+	Rainbow::Ref<Rainbow::Shader> m_Shader;
+	Rainbow::Ref<Rainbow::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Rainbow::Shader> m_FlatColorShader;
-	std::shared_ptr<Rainbow::VertexArray> m_SquareVA;
+	Rainbow::Ref<Rainbow::Shader> m_FlatColorShader;
+	Rainbow::Ref<Rainbow::VertexArray> m_SquareVA;
 
 	Rainbow::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
