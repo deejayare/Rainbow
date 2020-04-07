@@ -17,6 +17,7 @@ workspace "Rainbow"
 	IncludeDir["glad"] = "Rainbow/vendor/glad/include"
 	IncludeDir["ImGui"] = "Rainbow/vendor/imgui"
 	IncludeDir["glm"] = "Rainbow/vendor/glm"
+	IncludeDir["stb_image"] = "Rainbow/vendor/stb_image"
 	
 	group "Dependencies"
 		include "Rainbow/vendor/GLFW"
@@ -47,7 +48,9 @@ workspace "Rainbow"
 			"%{prj.name}/src/**.h",
 			"%{prj.name}/src/**.cpp",
 			"%{prj.name}/vendor/glm/glm/**.hpp",
-			"%{prj.name}/vendor/glm/glm/**.inl"
+			"%{prj.name}/vendor/glm/glm/**.inl",
+			"%{prj.name}/vendor/stb_image/**.h",
+			"%{prj.name}/vendor/stb_image/**.cpp"
 		}
 
 		defines
@@ -62,7 +65,8 @@ workspace "Rainbow"
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.glad}",
 			"%{IncludeDir.ImGui}",
-			"%{IncludeDir.glm}"
+			"%{IncludeDir.glm}",
+			"%{IncludeDir.stb_image}"
 		}
 		
 		links 

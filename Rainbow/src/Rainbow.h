@@ -20,6 +20,7 @@
 
 #include "Rainbow/Renderer/Buffer.h"
 #include "Rainbow/Renderer/Shader.h"
+#include "Rainbow/Renderer/Texture.h"
 #include "Rainbow/Renderer/VertexArray.h"
 
 #include "Rainbow/Renderer/OrthoGraphicCamera.h"
