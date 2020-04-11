@@ -5,6 +5,12 @@
 
 namespace Rainbow {
 
+	void Renderer::Init()
+	{
+		RenderCommand::Init();
+	}
+
+
 	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
 
 	void Renderer::BeginScene(OrthographicCamera& camera)
