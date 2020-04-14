@@ -6,6 +6,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Rainbow/Renderer/Shader.h"
+
 
 class ExampleLayer : public Rainbow::Layer
 {
@@ -103,7 +105,7 @@ public:
 
 		)";
 
-		m_Shader.reset(Rainbow::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Rainbow::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		
 
@@ -141,19 +143,19 @@ public:
 
 		)";
 
-		m_FlatColorShader.reset(Rainbow::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Rainbow::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
 
 
 
-		m_TextureShader.reset(Rainbow::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Rainbow::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_HeartTexture = Rainbow::Texture2D::Create("assets/textures/test.png");
 
 
-		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_TextureShader)->UploadUniformInt("m_Texture", 0);
+		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(textureShader)->UploadUniformInt("m_Texture", 0);
 
 	}
 
@@ -203,11 +205,13 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Rainbow::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Rainbow::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		m_HeartTexture->Bind();
-		Rainbow::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Rainbow::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
 		// Triangle
@@ -232,10 +236,11 @@ public:
 
 
 private:
+	Rainbow::ShaderLibrary m_ShaderLibrary;
 	Rainbow::Ref<Rainbow::Shader> m_Shader;
 	Rainbow::Ref<Rainbow::VertexArray> m_VertexArray;
 
-	Rainbow::Ref<Rainbow::Shader> m_FlatColorShader, m_TextureShader;
+	Rainbow::Ref<Rainbow::Shader> m_FlatColorShader;
 	Rainbow::Ref<Rainbow::VertexArray> m_SquareVA;
 
 	Rainbow::Ref<Rainbow::Texture2D> m_Texture, m_HeartTexture;
