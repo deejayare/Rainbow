@@ -7,6 +7,6 @@
 [submodule "Rainbow/vendor/imgui"]
 	path = Rainbow/vendor/imgui
 	url = https://github.com/TheCherno/imgui
-[submodule "Rainbow\\vendor\\glm"]
-	path = Rainbow\\vendor\\glm
+[submodule "Rainbow/vendor/glm"]
+	path = Rainbow/vendor/glm
 	url = https://github.com/g-truc/glm
