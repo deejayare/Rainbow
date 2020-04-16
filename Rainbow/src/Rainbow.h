@@ -10,6 +10,7 @@
 
 #include "Rainbow/Input.h"
 #include "Rainbow/MouseButtonCodes.h"
+#include "Rainbow/OrthographicCameraController.h"
 #include "Rainbow/KeyCodes.h"
 
 // ------------Renderer ----------------
