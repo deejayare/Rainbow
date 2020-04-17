@@ -61,6 +61,7 @@ namespace Rainbow {
 				data.Width = width;
 				data.Height = height;
 				WindowResizeEvent event(width, height);
+				RAINBOW_CORE_WARN("{0}, {1}", width, height);
 				data.EventCallback(event);
 
 			});

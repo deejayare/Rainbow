@@ -215,6 +215,17 @@ public:
 	void OnEvent(Rainbow::Event& e) override 
 	{
 		m_CameraController.OnEvent(e);
+
+
+		// playing around with resizing. should remove this
+		//if (e.GetEventType() == Rainbow::EventType::WindowResize)
+	//	{
+			//auto& re = (Rainbow::WindowResizeEvent&) e;
+
+			//float zoom = (float)re.GetWidth() / 1280.0f;
+			//m_CameraController.SetZoomLevel(zoom);
+	//	}
+			
 	}
 
 
