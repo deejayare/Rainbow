@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Core.h"
-#include "Window.h"
-#include "Events/Event.h"
+#include "Rainbow/Core/Core.h"
+#include "Rainbow/Core/Window.h"
+#include "Rainbow/Events/Event.h"
 #include "Rainbow/Events/ApplicationEvent.h"
-#include "Rainbow/LayerStack.h"
+#include "Rainbow/Core/LayerStack.h"
 #include "Rainbow/Core/Timestep.h"
 
 #include "Rainbow/Imgui/ImGuiLayer.h"

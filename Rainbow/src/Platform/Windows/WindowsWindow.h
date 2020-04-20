@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rainbow/Window.h"
+#include "Rainbow/Core/Window.h"
 #include "Rainbow/Renderer/GraphicsContext.h"
 #include <GLFW/glfw3.h>
 

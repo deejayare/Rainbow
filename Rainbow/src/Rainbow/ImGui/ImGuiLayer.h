@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rainbow/Layer.h"
+#include "Rainbow/Core/Layer.h"
 
 #include "Rainbow/Events/ApplicationEvent.h"
 #include "Rainbow/Events/MouseEvent.h"

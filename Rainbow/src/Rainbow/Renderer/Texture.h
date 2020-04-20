@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Rainbow/Core.h"
+#include "Rainbow/Core/Core.h"
 
 namespace Rainbow {
 

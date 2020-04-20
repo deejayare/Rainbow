@@ -1,8 +1,8 @@
 #include "rbpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Rainbow/Input.h"
-#include "Rainbow/KeyCodes.h"
+#include "Rainbow/Core/Input.h"
+#include "Rainbow/Core/KeyCodes.h"
 
 namespace Rainbow {
 

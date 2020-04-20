@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rainbow/Input.h"
+#include "Rainbow/Core/Input.h"
 
 namespace Rainbow {
 

@@ -5,7 +5,7 @@
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
 
-#include "Rainbow/Application.h"
+#include "Rainbow/Core/Application.h"
 
 // TEMPORARY
 #include <GLFW/glfw3.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rainbow/Core.h"
+#include "Rainbow/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

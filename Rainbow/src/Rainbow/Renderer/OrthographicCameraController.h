@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderer/OrthographicCamera.h"
+#include "Rainbow/Renderer/OrthographicCamera.h"
 #include "Rainbow/Core/Timestep.h"
 
 #include "Rainbow/Events/ApplicationEvent.h"

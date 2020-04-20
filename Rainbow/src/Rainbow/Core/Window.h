@@ -2,7 +2,7 @@
 
 #include "rbpch.h"
 
-#include "Rainbow/Core.h"
+#include "Rainbow/Core/Core.h"
 #include "Rainbow/Events/Event.h"
 
 namespace Rainbow {
