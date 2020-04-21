@@ -5,6 +5,8 @@
 
 namespace Rainbow {
 
+	Scope<Renderer::SceneData> Renderer::s_SceneData = CreateScope<Renderer::SceneData>();
+
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
@@ -15,8 +17,6 @@ namespace Rainbow {
 
 	}
 
-
-	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
 
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{

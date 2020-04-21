@@ -31,7 +31,7 @@ namespace Rainbow {
 
 		bool m_Rotation;
 		glm::vec3 m_CameraPosition = { 0.0f, 0.0f, 0.0f };
-		float m_CameraRotation = 0.0f;
+		float m_CameraRotation = 0.0f; //degrees anti-clockwise
 		float m_CameraTranslationSpeed = 1.0f, m_CameraRotationSpeed = 135.0f;
 
 	};

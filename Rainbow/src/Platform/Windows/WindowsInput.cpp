@@ -6,7 +6,7 @@
 
 namespace Rainbow {
 
-	Input* Input::s_Instance = new WindowsInput();
+	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 
 	bool Rainbow::WindowsInput::IsKeyPressedImpl(int keycode)
 	{

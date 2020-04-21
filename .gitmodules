@@ -1,12 +1,16 @@
 [submodule "Rainbow/vendor/spdlog"]
 	path = Rainbow/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = v1.x
 [submodule "Rainbow/vendor/GLFW"]
 	path = Rainbow/vendor/GLFW
 	url = https://github.com/thecherno/glfw
+	branch = master
 [submodule "Rainbow/vendor/imgui"]
 	path = Rainbow/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+	branch = master
 [submodule "Rainbow/vendor/glm"]
 	path = Rainbow/vendor/glm
 	url = https://github.com/g-truc/glm
+	branch = master

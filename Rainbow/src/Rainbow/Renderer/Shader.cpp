@@ -18,7 +18,7 @@ namespace Rainbow {
 		RAINBOW_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
 	}
-
+	
 	Ref<Shader> Shader::Create(const std::string&  name, const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		switch (Renderer::GetAPI())
