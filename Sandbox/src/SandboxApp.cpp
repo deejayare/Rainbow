@@ -1,4 +1,5 @@
 #include <Rainbow.h>
+#include <Rainbow/Core/EntryPoint.h>
 #include "Platform/OpenGL/OpenGLShader.h"
 
 #include "imgui/imgui.h"
@@ -8,6 +9,7 @@
 
 #include "Rainbow/Renderer/Shader.h"
 
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Rainbow::Layer
 {
@@ -15,7 +17,7 @@ public:
 	ExampleLayer() 
 		: Layer("Example"), m_CameraController(16.0f / 9.0f, true)
 	{
-		m_VertexArray.reset(Rainbow::VertexArray::Create());
+		m_VertexArray = Rainbow::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.2f, 0.7f, 0.1f, 1.0f,
@@ -40,7 +42,7 @@ public:
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
-		m_SquareVA.reset(Rainbow::VertexArray::Create());
+		m_SquareVA = Rainbow::VertexArray::Create();
 
 
 		float squareVertices[5 * 4] = {
@@ -251,7 +253,8 @@ class Sandbox : public Rainbow::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()

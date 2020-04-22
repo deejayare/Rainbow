@@ -26,7 +26,3 @@
 
 #include "Rainbow/Renderer/OrthoGraphicCamera.h"
 // -------------------------------------
-
-// ------------Entry Point--------------
-#include "Rainbow/Core/EntryPoint.h"
-// -------------------------------------
