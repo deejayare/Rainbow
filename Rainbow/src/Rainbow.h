@@ -17,6 +17,7 @@
 #include "Rainbow/ImGui/ImGuiLayer.h"
 
 #include "Rainbow/Renderer/Renderer.h"
+#include "Rainbow/Renderer/Renderer2D.h"
 #include "Rainbow/Renderer/RenderCommand.h"
 
 #include "Rainbow/Renderer/Buffer.h"

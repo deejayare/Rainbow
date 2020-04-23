@@ -18,34 +18,6 @@ void Sandbox2D::OnAttach()
 {
 
 
-	m_SquareVA = Rainbow::VertexArray::Create();
-
-
-	float squareVertices[5 * 4] = {
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.5f,  0.5f, 0.0f,
-	-0.5f,  0.5f, 0.0f
-	};
-
-	Rainbow::Ref<Rainbow::VertexBuffer> squareVB;
-	squareVB.reset(Rainbow::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-
-
-	squareVB->SetLayout({
-		{ Rainbow::ShaderDataType::Float3, "a_Position" }
-		});
-	m_SquareVA->AddVertexBuffer(squareVB);
-
-	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-
-	Rainbow::Ref<Rainbow::IndexBuffer> squareIB;
-	squareIB.reset(Rainbow::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-
-	m_SquareVA->SetIndexBuffer(squareIB);
-
-
-	m_FlatColorShader = Rainbow::Shader::Create("assets/shaders/FlatColor.glsl");
 
 }
 
@@ -64,18 +36,15 @@ void Sandbox2D::OnUpdate(Rainbow::Timestep ts)
 	Rainbow::RenderCommand::Clear();
 
 
-	Rainbow::Renderer::BeginScene(m_CameraController.GetCamera());
+	Rainbow::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	   
+	Rainbow::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 
+	Rainbow::Renderer2D::EndScene();
 
-
-	std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->Bind();
-	std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
-
-	Rainbow::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-
-
-	Rainbow::Renderer::EndScene();
+	// TODO: add Shader::SetMat4, etc in place of dynamic cast
+	//std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->Bind();
+	//std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 }
 
 void Sandbox2D::OnImGuiRender()
