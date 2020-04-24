@@ -2,7 +2,7 @@
 #include <Rainbow/Core/EntryPoint.h>
 #include "Platform/OpenGL/OpenGLShader.h"
 
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -25,8 +25,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.7f, 0.1f, 0.1f, 1.0f
 		};
 
-		Rainbow::Ref<Rainbow::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Rainbow::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Rainbow::Ref<Rainbow::VertexBuffer> vertexBuffer = Rainbow::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		Rainbow::BufferLayout layout = {
 			{ Rainbow::ShaderDataType::Float3, "a_Position"},
@@ -37,8 +36,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Rainbow::Ref<Rainbow::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Rainbow::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Rainbow::Ref<Rainbow::IndexBuffer> indexBuffer = Rainbow::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
@@ -52,8 +50,7 @@ public:
 		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Rainbow::Ref<Rainbow::VertexBuffer> squareVB;
-		squareVB.reset(Rainbow::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Rainbow::Ref<Rainbow::VertexBuffer> squareVB = Rainbow::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
 
 		squareVB->SetLayout({
@@ -64,8 +61,7 @@ public:
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 
-		Rainbow::Ref<Rainbow::IndexBuffer> squareIB;
-		squareIB.reset(Rainbow::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Rainbow::Ref<Rainbow::IndexBuffer> squareIB = Rainbow::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -156,8 +152,8 @@ public:
 		m_HeartTexture = Rainbow::Texture2D::Create("assets/textures/test.png");
 
 
-		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(textureShader)->UploadUniformInt("m_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 
 	}
 
@@ -177,8 +173,8 @@ public:
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 
-		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Rainbow::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 		for (int y = 0; y < 20; y++)
 		{

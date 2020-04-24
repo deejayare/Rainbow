@@ -23,7 +23,7 @@ namespace Rainbow {
 	};
 
 	// Interface representing a PC based Window
-	class RAINBOW_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)> ;
@@ -43,7 +43,7 @@ namespace Rainbow {
 		virtual void* GetNativeWindow() const = 0;
 
 		// Create should return a window based on which platform we're on (Windows/Linux/Mac)
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "Rainbow/Renderer/OrthographicCamera.h"
+#include "Rainbow/Renderer/Texture.h"
 namespace Rainbow {
 	
 	class Renderer2D

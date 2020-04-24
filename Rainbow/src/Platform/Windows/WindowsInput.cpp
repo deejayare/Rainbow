@@ -1,5 +1,5 @@
 #include "rbpch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 #include "Rainbow/Core/Application.h"
 
 #include <GLFW/glfw3.h>

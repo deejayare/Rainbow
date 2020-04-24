@@ -1,5 +1,5 @@
 #include "rbpch.h"
-#include "OrthographicCameraController.h"
+#include "Rainbow/Renderer/OrthographicCameraController.h"
 
 #include "Rainbow/Core/Input.h"
 #include "Rainbow/Core/KeyCodes.h"

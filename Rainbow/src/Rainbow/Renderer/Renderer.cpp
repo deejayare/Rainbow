@@ -1,7 +1,6 @@
 #include "rbpch.h"
-#include "Renderer.h"
-#include "Platform/OpenGL/OpenGLShader.h"
-#include "Renderer2D.h"
+#include "Rainbow/Renderer/Renderer.h"
+#include "Rainbow/Renderer/Renderer2D.h"
 
 namespace Rainbow {
 
@@ -12,6 +11,12 @@ namespace Rainbow {
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}
+
+	void Renderer::Shutdown()
+	{
+		Renderer2D::Shutdown();
+	}
+
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
 	{
 		RenderCommand::SetViewport(0, 0, width, height);
@@ -32,9 +37,8 @@ namespace Rainbow {
 	{
 		shader->Bind();
 
-		// TEMPORARY UploadUniform is a GL only aspect
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
+		shader->SetMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
+		shader->SetMat4("u_Transform", transform);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

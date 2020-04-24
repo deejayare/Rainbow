@@ -2,6 +2,8 @@
 
 // For use by Rainbow applications
 
+#include "Rainbow/Core/Core.h"
+
 #include "Rainbow/Core/Application.h"
 #include "Rainbow/Core/Layer.h"
 #include "Rainbow/Core/Log.h"

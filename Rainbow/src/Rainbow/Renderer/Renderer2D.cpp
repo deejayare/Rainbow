@@ -1,10 +1,10 @@
 #include "rbpch.h"
-#include "Renderer2D.h"
+#include "Rainbow/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
+#include "Rainbow/Renderer/VertexArray.h"
+#include "Rainbow/Renderer/Shader.h"
 
-#include "RenderCommand.h"
+#include "Rainbow/Renderer/RenderCommand.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Rainbow {
@@ -31,8 +31,7 @@ namespace Rainbow {
 		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Ref<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Ref<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
 
 		squareVB->SetLayout({
@@ -43,8 +42,7 @@ namespace Rainbow {
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 
-		Ref<IndexBuffer> squareIB;
-		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Ref<IndexBuffer> squareIB = IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 

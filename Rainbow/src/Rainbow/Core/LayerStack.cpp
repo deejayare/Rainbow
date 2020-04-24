@@ -1,12 +1,7 @@
 #include "rbpch.h"
-#include "LayerStack.h"
+#include "Rainbow/Core/LayerStack.h"
 
 namespace Rainbow {
-
-	LayerStack::LayerStack()
-	{
-	}
-
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)

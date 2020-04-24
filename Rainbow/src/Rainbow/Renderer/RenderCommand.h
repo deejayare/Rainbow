@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "Rainbow/Renderer/RendererAPI.h"
 
 namespace Rainbow {
 

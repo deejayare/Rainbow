@@ -1,4 +1,5 @@
 #pragma once
+#include "Rainbow/Core/Core.h"
 
 #ifdef RAINBOW_PLATFORM_WINDOWS
 

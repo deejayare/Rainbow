@@ -5,7 +5,7 @@
 
 namespace Rainbow {
 
-	class RAINBOW_API Input 
+	class Input 
 	{
 	protected:
 		Input() = default;

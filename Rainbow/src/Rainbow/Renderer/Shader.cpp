@@ -1,6 +1,6 @@
 #include "rbpch.h"
-#include "Shader.h"
-#include "Renderer.h"
+#include "Rainbow/Renderer/Shader.h"
+#include "Rainbow/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Rainbow {
@@ -12,7 +12,8 @@ namespace Rainbow {
 			case RendererAPI::API::None:
 				RAINBOW_CORE_ASSERT(false, "RendererAPI::None is not supported");
 				return nullptr;
-			case RendererAPI::API::OpenGL: return std::make_shared<OpenGLShader>(filepath);
+			case RendererAPI::API::OpenGL: 
+				return CreateRef<OpenGLShader>(filepath);
 		}
 
 		RAINBOW_CORE_ASSERT(false, "Unknown RendererAPI");
@@ -26,7 +27,8 @@ namespace Rainbow {
 		case RendererAPI::API::None:
 			RAINBOW_CORE_ASSERT(false, "RendererAPI::None is not supported");
 			return nullptr;
-		case RendererAPI::API::OpenGL: return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL: 
+			return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		RAINBOW_CORE_ASSERT(false, "Unknown RendererAPI");

@@ -43,22 +43,6 @@
 #error "Unknown platform!"
 #endif // End of platform detection
 
-
-// DLL support
-#ifdef RAINBOW_PLATFORM_WINDOWS
-	#if RAINBOW_DYNAMIC_LINK
-		#ifdef RAINBOW_BUILD_DLL
-			#define RAINBOW_API __declspec(dllexport)
-		#else
-			#define RAINBOW_API __declspec(dllimport)
-		#endif
-	#else
-		#define RAINBOW_API
-	#endif
-#else
-	#error Rainbow only supports Windows!
-#endif // End of DLL support
-
 #ifdef RAINBOW_DEBUG
 	#define RAINBOW_ENABLE_ASSERTS
 #endif

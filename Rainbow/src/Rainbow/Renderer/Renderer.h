@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RenderCommand.h"
-#include "OrthographicCamera.h"
-#include "Shader.h"
+#include "Rainbow/Renderer/RenderCommand.h"
+#include "Rainbow/Renderer/OrthographicCamera.h"
+#include "Rainbow/Renderer/Shader.h"
 
 namespace Rainbow {
 
@@ -12,6 +12,8 @@ namespace Rainbow {
 	{
 	public:
 		static void Init();
+		static void Shutdown();
+
 		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void BeginScene(OrthographicCamera& camera);

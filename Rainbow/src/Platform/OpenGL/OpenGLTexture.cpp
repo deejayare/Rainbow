@@ -1,6 +1,6 @@
 #include "rbpch.h"
-#include "OpenGLTexture.h"
-#include "stb_image.h"
+#include "Platform/OpenGL/OpenGLTexture.h"
+#include <stb_image.h>
 
 #include <glad/glad.h>
 
@@ -37,7 +37,7 @@ namespace Rainbow {
 		m_Height = height;
 
 		// internalFormat is the OpenGL format
-		GLenum internalFormat, dataFormat = 0;
+		GLenum internalFormat = 0, dataFormat = 0;
 		if (channels == 4)
 		{
 			internalFormat = GL_RGBA8;

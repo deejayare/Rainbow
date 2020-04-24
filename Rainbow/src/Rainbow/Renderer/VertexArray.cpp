@@ -1,6 +1,6 @@
 #include "rbpch.h"
-#include "VertexArray.h"
-#include "Renderer.h"
+#include "Rainbow/Renderer/VertexArray.h"
+#include "Rainbow/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace Rainbow {
@@ -11,7 +11,8 @@ namespace Rainbow {
 		case RendererAPI::API::None:
 			RAINBOW_CORE_ASSERT(false, "RendererAPI::None is not supported");
 			return nullptr;
-		case RendererAPI::API::OpenGL: return CreateRef<OpenGLVertexArray>();
+		case RendererAPI::API::OpenGL: 
+			return CreateRef<OpenGLVertexArray>();
 		}
 
 		RAINBOW_CORE_ASSERT(false, "Unknown RendererAPI");

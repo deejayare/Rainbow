@@ -1,9 +1,9 @@
 #include "rbpch.h"
-#include "Application.h"
+#include "Rainbow/Core/Application.h"
 
 #include "Rainbow/Renderer/Renderer.h"
 
-#include "Input.h"
+#include "Rainbow/Core/Input.h"
 
 #include <glfw/glfw3.h>
 
@@ -22,8 +22,8 @@ namespace Rainbow {
 		RAINBOW_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window = Window::Create();
+		m_Window->SetEventCallback(RAINBOW_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
 
@@ -31,7 +31,10 @@ namespace Rainbow {
 		PushOverlay(m_ImGuiLayer);
 	} 
 
-	
+	Application::~Application()
+	{
+		Renderer::Shutdown();
+	}
 
 	void Application::PushLayer(Layer* layer)
 	{
@@ -46,8 +49,8 @@ namespace Rainbow {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(RAINBOW_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(RAINBOW_BIND_EVENT_FN(Application::OnWindowResize));
 		//RAINBOW_CORE_TRACE("{0}", e);
 
 

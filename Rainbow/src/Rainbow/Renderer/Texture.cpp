@@ -1,6 +1,6 @@
 #include "rbpch.h"
-#include "Texture.h"
-#include "Renderer.h"
+#include "Rainbow/Renderer/Texture.h"
+#include "Rainbow/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Rainbow {
@@ -12,7 +12,8 @@ namespace Rainbow {
 		case RendererAPI::API::None:
 			RAINBOW_CORE_ASSERT(false, "RendererAPI::None is not supported");
 			return nullptr;
-		case RendererAPI::API::OpenGL: return CreateRef<OpenGLTexture2D>(width, height);
+		case RendererAPI::API::OpenGL: 
+			return CreateRef<OpenGLTexture2D>(width, height);
 		}
 
 		RAINBOW_CORE_ASSERT(false, "Unknown RendererAPI");
@@ -26,7 +27,8 @@ namespace Rainbow {
 		case RendererAPI::API::None:
 			RAINBOW_CORE_ASSERT(false, "RendererAPI::None is not supported");
 			return nullptr;
-		case RendererAPI::API::OpenGL: return CreateRef<OpenGLTexture2D>(path);
+		case RendererAPI::API::OpenGL: 
+			return CreateRef<OpenGLTexture2D>(path);
 		}
 
 		RAINBOW_CORE_ASSERT(false, "Unknown RendererAPI");

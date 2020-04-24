@@ -1,9 +1,9 @@
 #include "rbpch.h"
-#include "ImGuiLayer.h"
+#include "Rainbow/ImGui/ImGuiLayer.h"
 
-#include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <examples/imgui_impl_glfw.h>
+#include <examples/imgui_impl_opengl3.h>
 
 #include "Rainbow/Core/Application.h"
 

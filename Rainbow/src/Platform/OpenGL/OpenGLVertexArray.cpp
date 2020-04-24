@@ -1,5 +1,5 @@
 #include "rbpch.h"
-#include "OpenGLVertexArray.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
 #include <glad/glad.h>
 
 
@@ -12,18 +12,18 @@ namespace Rainbow {
 	{
 		switch (type)
 		{
-			case Rainbow::ShaderDataType::None:     return GL_FLOAT;
-			case Rainbow::ShaderDataType::Float:    return GL_FLOAT;
-			case Rainbow::ShaderDataType::Float2:   return GL_FLOAT;
-			case Rainbow::ShaderDataType::Float3:   return GL_FLOAT;
-			case Rainbow::ShaderDataType::Float4:   return GL_FLOAT;
-			case Rainbow::ShaderDataType::Mat3:     return GL_FLOAT;
-			case Rainbow::ShaderDataType::Mat4:     return GL_FLOAT;
-			case Rainbow::ShaderDataType::Int:      return GL_INT;
-			case Rainbow::ShaderDataType::Int2:     return GL_INT;
-			case Rainbow::ShaderDataType::Int3:     return GL_INT;
-			case Rainbow::ShaderDataType::Int4:     return GL_INT;
-			case Rainbow::ShaderDataType::Bool:     return GL_BOOL;
+			case ShaderDataType::None:     return GL_FLOAT;
+			case ShaderDataType::Float:    return GL_FLOAT;
+			case ShaderDataType::Float2:   return GL_FLOAT;
+			case ShaderDataType::Float3:   return GL_FLOAT;
+			case ShaderDataType::Float4:   return GL_FLOAT;
+			case ShaderDataType::Mat3:     return GL_FLOAT;
+			case ShaderDataType::Mat4:     return GL_FLOAT;
+			case ShaderDataType::Int:      return GL_INT;
+			case ShaderDataType::Int2:     return GL_INT;
+			case ShaderDataType::Int3:     return GL_INT;
+			case ShaderDataType::Int4:     return GL_INT;
+			case ShaderDataType::Bool:     return GL_BOOL;
 		}
 		RAINBOW_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;

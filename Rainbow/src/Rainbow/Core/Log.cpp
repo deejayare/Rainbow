@@ -1,6 +1,6 @@
 #include "rbpch.h"
-
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include "Rainbow/Core/Log.h"
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace Rainbow {
 

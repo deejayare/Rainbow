@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Rainbow/Core/Core.h"
-#include "Layer.h"
+#include "Rainbow/Core/Layer.h"
 
 #include <vector>
 
 namespace Rainbow {
 
-	class RAINBOW_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);
