@@ -8,11 +8,17 @@ extern Rainbow::Application* Rainbow::CreateApplication();
 int main(int argc, char** argv)
 {
 	Rainbow::Log::Init();
-	RAINBOW_CORE_WARN("Initialized Log!");
-	int a = 5;
-	RAINBOW_INFO("Hello! Var={0}", a);
+
+	RAINBOW_PROFILE_BEGIN_SESSION("Startup", "RainbowProfile-Startup.json");
 	auto app = Rainbow::CreateApplication();
+	RAINBOW_PROFILE_END_SESSION();
+
+	RAINBOW_PROFILE_BEGIN_SESSION("Runtime", "RainbowProfile-Runtime.json");
 	app->Run();
+	RAINBOW_PROFILE_END_SESSION();
+
+	RAINBOW_PROFILE_BEGIN_SESSION("Shutdown", "RainbowProfile-Shutdown.json");
 	delete app;
+	RAINBOW_PROFILE_END_SESSION();
 }
 #endif

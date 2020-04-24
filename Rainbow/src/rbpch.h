@@ -15,6 +15,8 @@
 
 #include "Rainbow/Core/Log.h"
 
+#include "Rainbow/Debug/Instrumentor.h"
+
 #ifdef RAINBOW_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
