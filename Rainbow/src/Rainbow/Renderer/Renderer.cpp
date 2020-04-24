@@ -8,6 +8,7 @@ namespace Rainbow {
 
 	void Renderer::Init()
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

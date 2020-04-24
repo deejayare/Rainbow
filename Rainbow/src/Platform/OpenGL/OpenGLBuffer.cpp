@@ -10,6 +10,7 @@ namespace Rainbow {
 	/////////////////////////////////////////////////////////////////////////////////
 	Rainbow::OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
@@ -17,16 +18,19 @@ namespace Rainbow {
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void Rainbow::OpenGLVertexBuffer::Bind() const
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 
 	void Rainbow::OpenGLVertexBuffer::Unbind() const
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
@@ -37,6 +41,7 @@ namespace Rainbow {
 	Rainbow::OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count) 
 		: m_Count(count)
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
@@ -44,16 +49,19 @@ namespace Rainbow {
 
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void Rainbow::OpenGLIndexBuffer::Bind() const
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 
 	void Rainbow::OpenGLIndexBuffer::Unbind() const
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 }

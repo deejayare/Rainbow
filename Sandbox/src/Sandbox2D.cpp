@@ -14,23 +14,20 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	RAINBOW_PROFILE_FUNCTION();
 	m_CheckerboardTexture = Rainbow::Texture2D::Create("assets/textures/Checkerboard.png");
-
-
 }
 
 void Sandbox2D::OnDetach()
 {
+	RAINBOW_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnUpdate(Rainbow::Timestep ts)
 {
 	RAINBOW_PROFILE_FUNCTION();
 	// Update
-	{
-		RAINBOW_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+	m_CameraController.OnUpdate(ts);
 
 
 

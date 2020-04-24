@@ -23,16 +23,19 @@ namespace Rainbow {
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -41,13 +44,17 @@ namespace Rainbow {
 
 		if (s_GLFWWindowCount == 0)
 		{
+			RAINBOW_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
 			RAINBOW_CORE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
-
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		++s_GLFWWindowCount;
+		
+		{
+			RAINBOW_PROFILE_SCOPE("glfwCreateWindow");
+			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+			++s_GLFWWindowCount;
+		}
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
 
@@ -153,6 +160,7 @@ namespace Rainbow {
 
 	void WindowsWindow::Shutdown()
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glfwDestroyWindow(m_Window);
 
 		--s_GLFWWindowCount;
@@ -165,12 +173,14 @@ namespace Rainbow {
 
 	void WindowsWindow::OnUpdate()
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		RAINBOW_PROFILE_FUNCTION();
 		if (enabled)
 			glfwSwapInterval(1);
 		else
