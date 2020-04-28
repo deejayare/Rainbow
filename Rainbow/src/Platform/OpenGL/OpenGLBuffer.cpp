@@ -3,12 +3,18 @@
 #include <glad/glad.h> 
 
 namespace Rainbow {
-
-
 	/////////////////////////////////////////////////////////////////////////////////
 	// VertexBuffer /////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////
-	Rainbow::OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
+	{
+		RAINBOW_PROFILE_FUNCTION();
+		glCreateBuffers(1, &m_RendererID);
+		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
+	}
+
+	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
 		RAINBOW_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
@@ -22,23 +28,30 @@ namespace Rainbow {
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
-	void Rainbow::OpenGLVertexBuffer::Bind() const
+	void OpenGLVertexBuffer::Bind() const
 	{
 		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 
-	void Rainbow::OpenGLVertexBuffer::Unbind() const
+	void OpenGLVertexBuffer::Unbind() const
 	{
 		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	void OpenGLVertexBuffer::SetData(const void* data, uint32_t size)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, size, data);
+
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// IndexBuffer //////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////
 
-	Rainbow::OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count) 
+	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count) 
 		: m_Count(count)
 	{
 		RAINBOW_PROFILE_FUNCTION();
@@ -56,13 +69,13 @@ namespace Rainbow {
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
-	void Rainbow::OpenGLIndexBuffer::Bind() const
+	void OpenGLIndexBuffer::Bind() const
 	{
 		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 
-	void Rainbow::OpenGLIndexBuffer::Unbind() const
+	void OpenGLIndexBuffer::Unbind() const
 	{
 		RAINBOW_PROFILE_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
