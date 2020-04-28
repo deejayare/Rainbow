@@ -44,12 +44,22 @@
 #endif // End of platform detection
 
 #ifdef RAINBOW_DEBUG
+	#if defined(RAINBOW_PLATFORM_WINDOWS)
+		#define RAINBOW_DEBUGBREAK() __debugbreak()
+	#elif defined(RAINBOW_PLATFORM_LINUX)
+		#include <signal.h>
+		#define RAINBOW_DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#error "Platform doesn't support debugbreak yet!"
+	#endif
 	#define RAINBOW_ENABLE_ASSERTS
+#else
+	#define RAINBOW_DEBUGBREAK()
 #endif
 
 #ifdef RAINBOW_ENABLE_ASSERTS
-	#define RAINBOW_ASSERT(x, ...) { if(!(x)) { RAINBOW_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define RAINBOW_CORE_ASSERT(x, ...) { if(!(x)) { RAINBOW_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define RAINBOW_ASSERT(x, ...) { if(!(x)) { RAINBOW_ERROR("Assertion Failed: {0}", __VA_ARGS__); RAINBOW_DEBUGBREAK(); } }
+	#define RAINBOW_CORE_ASSERT(x, ...) { if(!(x)) { RAINBOW_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); RAINBOW_DEBUGBREAK(); } }
 #else
 	#define RAINBOW_ASSERT(x, ...)
 	#define RAINBOW_CORE_ASSERT(x, ...)

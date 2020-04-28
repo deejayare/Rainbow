@@ -3,7 +3,6 @@
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
-#include <GL/GL.h>
 
 namespace Rainbow {
 
@@ -24,13 +23,13 @@ namespace Rainbow {
 		RAINBOW_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
 		RAINBOW_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
 		RAINBOW_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
-	#ifdef HZ_ENABLE_ASSERTS
+	#ifdef RAINBOW_ENABLE_ASSERTS
 		int versionMajor;
 		int versionMinor;
 		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
 		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
 
-		HZ_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Hazel requires at least OpenGL version 4.5!");
+		RAINBOW_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Rainbow requires at least OpenGL version 4.5!");
 	#endif
 	}
 

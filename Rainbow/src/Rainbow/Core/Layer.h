@@ -18,7 +18,7 @@ namespace Rainbow {
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
-		inline const std::string& GetName() const { return m_DebugName; }
+		const std::string& GetName() const { return m_DebugName; }
 
 	protected:
 		// Name used for debug purposes. We generally don't want to refer to layers by names in Distribution builds

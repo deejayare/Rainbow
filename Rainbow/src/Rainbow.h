@@ -11,8 +11,8 @@
 #include "Rainbow/Core/Timestep.h"
 
 #include "Rainbow/Core/Input.h"
-#include "Rainbow/Core/MouseButtonCodes.h"
 #include "Rainbow/Renderer/OrthographicCameraController.h"
+#include "Rainbow/Core/MouseCodes.h"
 #include "Rainbow/Core/KeyCodes.h"
 
 // ------------Renderer ----------------

@@ -61,6 +61,7 @@ workspace "Rainbow"
 		defines
 		{
 			"_CRT_SECURE_NO_WARNINGS"
+			"GLFW_INCLUDE_NONE"
 		}
 
 		includedirs
@@ -88,9 +89,6 @@ workspace "Rainbow"
 			
 			defines
 			{
-				"RAINBOW_PLATFORM_WINDOWS",
-				"RAINBOW_BUILD_DLL",
-				"GLFW_INCLUDE_NONE"
 			}
 
 		filter "configurations:Debug"
@@ -139,11 +137,6 @@ workspace "Rainbow"
 
 		filter "system:windows"
 			systemversion "latest"
-			
-			defines
-			{
-				"RAINBOW_PLATFORM_WINDOWS",
-			}
 
 		filter "configurations:Debug"
 			defines "RAINBOW_DEBUG"

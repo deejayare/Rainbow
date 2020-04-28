@@ -43,6 +43,9 @@ namespace Rainbow {
 	{
 		RAINBOW_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
+
+		// GL_ELEMENT_ARRAY_BUFFER is not valid without an actively bound VAO
+		// Binding with GL_ARRAY_BUFFER instead allows the data to be loaded even with no bound VAO
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
 	}
