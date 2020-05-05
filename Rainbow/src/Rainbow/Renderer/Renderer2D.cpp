@@ -204,10 +204,19 @@ namespace Rainbow {
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
 			FlushAndReset();
 
+		//TEMPORARY
+		constexpr float x = 7, y = 6;
+		constexpr float sheetWidth = 2560, sheetHeight = 1664;
+		constexpr float spriteWidth = 128, spriteHeight = 128;
 
 		constexpr size_t quadVertexCount = 4;
 		constexpr glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
-		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		constexpr glm::vec2 textureCoords[] = { 
+			{ (x * spriteWidth) / sheetWidth, (y * spriteHeight) / sheetHeight }, 
+			{ ((x + 1) * spriteWidth) / sheetWidth, (y * spriteHeight) / sheetHeight},
+			{ ((x + 1) * spriteWidth) / sheetWidth, ((y + 1) * spriteHeight) / sheetHeight },
+			{ (x * spriteWidth) / sheetWidth, ((y + 1) * spriteHeight) / sheetHeight }
+		};
 
 		float textureIndex = 0.0f;
 

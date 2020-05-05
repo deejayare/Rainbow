@@ -16,12 +16,13 @@ void Sandbox2D::OnAttach()
 {
 	RAINBOW_PROFILE_FUNCTION();
 	m_CheckerboardTexture = Rainbow::Texture2D::Create("assets/textures/Checkerboard.png");
+	m_SpriteSheet = Rainbow::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
 	
 	// Particle Init
 	m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
 	m_Particle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
 	m_Particle.SizeBegin = 0.5f, m_Particle.SizeVariation = 0.3f, m_Particle.SizeEnd = 0.0f;
-	m_Particle.LifeTime = 1.0f;
+	m_Particle.LifeTime = 5.0f;
 	m_Particle.Velocity = { 0.0f, 0.0f };
 	m_Particle.VelocityVariation = { 3.0f, 1.0f };
 	m_Particle.Position = { 0.0f, 0.0f };
@@ -47,19 +48,21 @@ void Sandbox2D::OnUpdate(Rainbow::Timestep ts)
 		Rainbow::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Rainbow::RenderCommand::Clear();
 	}
-	
+#if 0
 	{
 		RAINBOW_PROFILE_SCOPE("Renderer Draw");
 		static float rotation = 0.0f;
 		rotation += ts * 20.0f;
 
 		Rainbow::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		Rainbow::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, glm::radians(4*rotation) , { 0.8f, 0.2f, 0.3f, 1.0f });
+		Rainbow::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, glm::radians(4 * rotation), { 0.8f, 0.2f, 0.3f, 1.0f });
 		Rainbow::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 		Rainbow::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, m_SquareColor);
 		Rainbow::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
 		Rainbow::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, glm::radians(-rotation), m_CheckerboardTexture, 20.0f);
 		Rainbow::Renderer2D::EndScene();
+
+
 
 
 		Rainbow::Renderer2D::BeginScene(m_CameraController.GetCamera());
@@ -69,13 +72,14 @@ void Sandbox2D::OnUpdate(Rainbow::Timestep ts)
 			{
 				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.8f };
 				//Rainbow::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
-				Rainbow::Renderer2D::DrawRotatedQuad({ x, y }, { 0.45f, 0.45f }, glm::radians(rotation * ( 1 - (y + 5.0f) / 10.0f ) ), color);
+				Rainbow::Renderer2D::DrawRotatedQuad({ x, y }, { 0.45f, 0.45f }, glm::radians(rotation * (1 - (y + 5.0f) / 10.0f)), color);
 			}
 		}
 
 		Rainbow::Renderer2D::EndScene();
 
-
+	}
+#endif
 
 		if (Rainbow::Input::IsMouseButtonPressed(RAINBOW_MOUSE_BUTTON_LEFT))
 		{
@@ -88,16 +92,20 @@ void Sandbox2D::OnUpdate(Rainbow::Timestep ts)
 			x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
 			y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
 			m_Particle.Position = { x + pos.x, y + pos.y };
-			for (int i = 0; i < 50; i++)
+			for (int i = 0; i < 5; i++)
 				m_ParticleSystem.Emit(m_Particle);
 		}
+
 
 		m_ParticleSystem.OnUpdate(ts);
 		m_ParticleSystem.OnRender(m_CameraController.GetCamera());
 
+		Rainbow::Renderer2D::BeginScene(m_CameraController.GetCamera());
+		Rainbow::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.5f }, { 1.0f, 1.0f }, m_SpriteSheet);
+		Rainbow::Renderer2D::EndScene();
 
 
-	}
+	
 
 }
 
