@@ -1,5 +1,6 @@
 #pragma once
 #include "Rainbow.h"
+#include "ParticleSystem.h"
 
 class Sandbox2D : public Rainbow::Layer
 {
@@ -25,4 +26,6 @@ private:
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3, 0.8f, 1.0f };
 
+	ParticleProps m_Particle;
+	ParticleSystem m_ParticleSystem;
 };
