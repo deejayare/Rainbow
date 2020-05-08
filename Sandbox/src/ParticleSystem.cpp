@@ -56,6 +56,19 @@ void ParticleSystem::OnUpdate(Rainbow::Timestep ts)
 
 void ParticleSystem::OnRender(Rainbow::OrthographicCamera& camera)
 {
+
+	//TEMPORARY fix to prevent BeginScene/EndScene with no particles (causes artifacts)
+	bool anyActive = false;
+	for (auto& particle : m_ParticlePool)
+	{
+		
+		if (!particle.Active)
+			continue;
+		anyActive = true;
+			
+	}
+	if (!anyActive)
+		return;
 	
 	Rainbow::Renderer2D::BeginScene(camera);
 

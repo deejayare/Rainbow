@@ -23,6 +23,7 @@ private:
 
 	Rainbow::Ref<Rainbow::Texture2D> m_CheckerboardTexture;
 	Rainbow::Ref<Rainbow::Texture2D> m_SpriteSheet;
+	Rainbow::Ref<Rainbow::SubTexture2D> m_TextureStairs, m_TextureBarrel, m_TextureTree;
 
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3, 0.8f, 1.0f };

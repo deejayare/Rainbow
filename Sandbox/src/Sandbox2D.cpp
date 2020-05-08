@@ -6,7 +6,7 @@
 
 
 Sandbox2D::Sandbox2D()
-	: Layer("Sandbox2D"), m_CameraController(16.0f / 9.0f, true), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
+	: Layer("Sandbox2D"), m_CameraController(16.0f / 9.0f), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
 {
 
 }
@@ -17,12 +17,16 @@ void Sandbox2D::OnAttach()
 	RAINBOW_PROFILE_FUNCTION();
 	m_CheckerboardTexture = Rainbow::Texture2D::Create("assets/textures/Checkerboard.png");
 	m_SpriteSheet = Rainbow::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
+
+	m_TextureStairs = Rainbow::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 7, 6 }, { 128, 128 });
+	m_TextureBarrel = Rainbow::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 8, 2 }, { 128, 128 });
+	m_TextureTree = Rainbow::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
 	
 	// Particle Init
 	m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
 	m_Particle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
 	m_Particle.SizeBegin = 0.5f, m_Particle.SizeVariation = 0.3f, m_Particle.SizeEnd = 0.0f;
-	m_Particle.LifeTime = 5.0f;
+	m_Particle.LifeTime = 1.0f;
 	m_Particle.Velocity = { 0.0f, 0.0f };
 	m_Particle.VelocityVariation = { 3.0f, 1.0f };
 	m_Particle.Position = { 0.0f, 0.0f };
@@ -101,7 +105,9 @@ void Sandbox2D::OnUpdate(Rainbow::Timestep ts)
 		m_ParticleSystem.OnRender(m_CameraController.GetCamera());
 
 		Rainbow::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		Rainbow::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.5f }, { 1.0f, 1.0f }, m_SpriteSheet);
+		Rainbow::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.5f }, { 1.0f, 1.0f }, m_TextureStairs);
+		Rainbow::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.5f }, { 1.0f, 1.0f }, m_TextureBarrel);
+		Rainbow::Renderer2D::DrawQuad({ -1.0f, 0.0f, 0.5f }, { 1.0f, 2.0f }, m_TextureTree);
 		Rainbow::Renderer2D::EndScene();
 
 
